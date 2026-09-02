@@ -117,6 +117,7 @@ Once instructed, the AI Agent will autonomously:
 
 | Document Component | Enforced Academic Standard |
 |---|---|
+| **Report Language** | **Formal Academic Indonesian (*Bahasa Indonesia Baku*)** in compliance with university thesis guidelines (EBI). All chapter designations (`BAB I` to `BAB V`), section titles, and narrative text are written in Indonesian, with specialized English technical terms (*framework, backend, API Gateway, middleware*) properly italicized. |
 | **Paper & Margins** | **A4** (21.0 × 29.7 cm). Margins: **Left 4.0 cm** (for binding), **Top 3.0 cm**, **Right 3.0 cm**, **Bottom 3.0 cm**. |
 | **Typography** | **Times New Roman**, **12 pt** for body paragraphs, **1.5 line spacing**, **1.0 cm first-line indent**, **Justified** alignment. |
 | **Page Numbering** | **Cover:** No page number.<br>**Front Matter:** Lowercase Roman numerals (`i, ii, iii...`) at **bottom-right**.<br>**Main Body & Appendices:** Arabic numerals (`1, 2, 3...`) starting at `1` at **bottom-right**. |

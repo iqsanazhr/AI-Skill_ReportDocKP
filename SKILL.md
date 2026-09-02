@@ -30,4 +30,6 @@ The AI Agent will:
 3. Formulate and render 6 software engineering diagrams (Architecture, Use Case, Class, ERD, Flowchart, Sequence) via Mermaid API to PNG.
 4. Run `python scripts/kp_docx_generator.py` to compile the final `.docx` report with 4-3-3-3 cm margins, proper page numbering, and clean tables.
 
+> **Note on Report Language:** While instructions and skill definitions are in English, the generated report itself (all chapters BAB I to V, tables, captions, and appendices) **MUST be written in formal academic Indonesian (*Bahasa Indonesia Baku*)** conforming to Indonesian university thesis standards.
+
 For full rules and detailed structural breakdowns, refer to [`agent.md`](file:///d:/lokal%20bkpsdm/AI%20Skill%20KP%20generator/agent.md) and [`README.md`](file:///d:/lokal%20bkpsdm/AI%20Skill%20KP%20generator/README.md).
