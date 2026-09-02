@@ -32,4 +32,4 @@ Once confirmed, the AI Agent will:
 
 > **Note on Report Language:** While instructions and skill definitions are in English, the generated report itself (all chapters BAB I to V, tables, captions, and appendices) **MUST be written in formal academic Indonesian (*Bahasa Indonesia Baku*)** conforming to Indonesian university thesis standards.
 
-For full rules and detailed structural breakdowns, refer to [`agent.md`](file:///d:/lokal%20bkpsdm/AI%20Skill%20KP%20generator/agent.md) and [`README.md`](file:///d:/lokal%20bkpsdm/AI%20Skill%20KP%20generator/README.md).
+For full rules and detailed structural breakdowns, refer to [`agent.md`](agent.md) and [`README.md`](README.md).
