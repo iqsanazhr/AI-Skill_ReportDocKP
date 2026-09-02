@@ -181,18 +181,22 @@ NIP. 198505102008121002
 * Gambar 12. Halaman Modul Pengaduan Masyarakat dan Tindak Lanjut — 66
 * Gambar 13. Flowchart Alur Layanan Konsultasi Online ASN dan Live Chat — 68
 * Gambar 14. Sequence Diagram Ruang Chat Interaktif ASN dan Staf — 69
-* Gambar 15. Tampilan Portal Formulir Pengajuan Konsultasi Online (Port 8002) — 70
-* Gambar 16. Tampilan Ruang Live Chat Interaktif ASN Pemohon dan Staf — 71
-* Gambar 17. Tampilan Portal Pengisian Survei IKM 16 Layanan (Port 8001) — 72
-* Gambar 18. Terminal WhatsApp Gateway Bot Node.js (Port 3000) — 73
-* Gambar 19. Flowchart Integrasi REST API Gateway dan Push Notification FCM — 75
-* Gambar 20. Sequence Diagram Push Notification FCM ke Mobile Staf — 76
-* Gambar 21. Tampilan Halaman Login dan Pengaturan Server Dinamis SAPA BKPSDM — 77
-* Gambar 22. Tampilan Dashboard Bento Grid dan Live Status Tamu SAPA BKPSDM — 78
-* Gambar 23. Tampilan Workspace Konsultasi Berbasis Scope Peran pada Mobile — 79
-* Gambar 24. Tampilan Ruang Chat Interaktif dan Quick Responses pada Mobile — 80
-* Gambar 25. Tampilan Monitoring Buku Tamu dan Riwayat Kunjungan pada Mobile — 81
-* Gambar 26. Tampilan Ekspor Laporan Rekapitulasi PDF dan Excel — 82
+* Gambar 15. Tampilan Halaman Beranda (Landing Page) Portal Layanan Online BKPSDM (Port 8002) — 70
+* Gambar 16. Tampilan Dashboard Portal Pegawai ASN Terautentikasi (Port 8002) — 71
+* Gambar 17. Tampilan Portal Formulir Pengajuan Konsultasi Online (Port 8002) — 72
+* Gambar 18. Tampilan Ruang Live Chat Interaktif ASN Pemohon dan Staf — 73
+* Gambar 19. Tampilan Portal Pengisian Survei IKM 16 Layanan (Port 8001) — 74
+* Gambar 20. Terminal WhatsApp Gateway Bot Node.js (Port 3000) — 75
+* Gambar 21. Flowchart Integrasi REST API Gateway dan Push Notification FCM — 76
+* Gambar 22. Sequence Diagram Push Notification FCM ke Mobile Staf — 77
+* Gambar 23. Tampilan Halaman Login dan Pengaturan Server Dinamis SAPA BKPSDM — 78
+* Gambar 24. Tampilan Dashboard Bento Grid dan Live Status Tamu SAPA BKPSDM — 79
+* Gambar 25. Tampilan Workspace Konsultasi Berbasis Scope Peran pada Mobile — 80
+* Gambar 26. Tampilan Ruang Chat Interaktif dan Quick Responses pada Mobile — 81
+* Gambar 27. Tampilan Monitoring Buku Tamu dan Riwayat Kunjungan pada Mobile — 82
+* Gambar 28. Tampilan Kalender Janji Temu dan Agenda Pertemuan pada Mobile SAPA BKPSDM — 83
+* Gambar 29. Tampilan Pengaturan Profil Akun dan Konfigurasi Tema pada Mobile — 84
+* Gambar 30. Tampilan Ekspor Laporan Rekapitulasi PDF dan Excel — 85
 
 ---
 
@@ -812,8 +816,13 @@ erDiagram
 ```
 *Gambar 4. Entity Relationship Diagram (ERD) Sistem BKPSDM*
 
-* **Gambar 5. Halaman Login Multi-Role Portal Admin BKPSDM:** Antarmuka otentikasi terpusat (Port 8000) dengan fitur proteksi sesi, validasi kredensial NIP/Username, dan pengalihan dinamis ke dashboard berdasarkan wewenang peran (Super Admin, Kepala Badan, Admin Bidang, Staf, atau Resepsionis).
-* **Gambar 6. Halaman Manajemen Master Pengguna dan Bidang:** Antarmuka pengelolaan data master akun pegawai, penetapan hak akses role Spatie RBAC, pengaitan dengan 4 bidang struktural BKPSDM, dan aktivasi status akun.
+*Gambar 5. Halaman Login Multi-Role Portal Admin BKPSDM*
+
+Antarmuka otentikasi terpusat (Port 8000) menyajikan fitur proteksi sesi, validasi kredensial NIP/Username, dan pengalihan dinamis ke dashboard berdasarkan wewenang peran (Super Admin, Kepala Badan, Admin Bidang, Staf, atau Resepsionis).
+
+*Gambar 6. Halaman Manajemen Master Pengguna dan Bidang*
+
+Antarmuka pengelolaan data master akun pegawai menyajikan penetapan hak akses role Spatie RBAC, pengaitan dengan 4 bidang struktural BKPSDM, dan aktivasi status akun.
 
 ---
 
@@ -847,11 +856,25 @@ sequenceDiagram
 ```
 *Gambar 8. Sequence Diagram Check-In Tamu dan Trigger Notifikasi Otomatis*
 
-* **Gambar 7. Flowchart Alur Check-In Tamu Mandiri di Kios Lobi:** Diagram alir yang menggambarkan tahapan pengisian identitas tamu, pemilihan bidang tujuan, pengambilan snapshot foto melalui kamera webcam, penyimpanan data ke server, hingga pencetakan struk nomor antrean dan pengiriman pesan notifikasi WhatsApp/FCM.
-* **Gambar 9. Tampilan Kios Digital Self Check-In Tamu di Lobi (Port 8003):** Antarmuka ramah sentuhan (*touch-screen kiosk*) yang memandu tamu mengisi nama, NIP/NIK, instansi asal, no. WhatsApp, serta memilih pegawai yang hendak ditemui di 4 bidang BKPSDM.
-* **Gambar 10. Tampilan Modal Snapshot Foto Webcam dan Cetak Tiket Tamu:** Tampilan popup kamera HTML5 yang mengambil foto wajah pengunjung secara instan dan menghasilkan pratinjau struk tiket berformat QR Code yang siap dicetak pada printer thermal lobi.
-* **Gambar 11. Halaman Manajemen Data Tamu dan Janji Temu Admin (Port 8000):** Tampilan tabel rekapitulasi kehadiran tamu harian, penanda status check-in/check-out, verifikasi foto identitas, pencatatan notulensi kunjungan, dan manajemen janji temu masa depan (*future appointments*).
-* **Gambar 12. Halaman Modul Pengaduan Masyarakat dan Tindak Lanjut:** Antarmuka pengawasan aduan publik yang menampilkan kode pengaduan, nama pelapor, kategori masalah, berkas lampiran bukti, serta form disposisi arahan dari pimpinan ke bidang terkait.
+*Gambar 7. Flowchart Alur Check-In Tamu Mandiri di Kios Lobi*
+
+Diagram alir di atas menggambarkan tahapan pengisian identitas tamu, pemilihan bidang tujuan, pengambilan snapshot foto melalui kamera webcam, penyimpanan data ke server, hingga pencetakan struk nomor antrean dan pengiriman pesan notifikasi WhatsApp/FCM.
+
+*Gambar 9. Tampilan Kios Digital Self Check-In Tamu di Lobi (Port 8003)*
+
+Antarmuka ramah sentuhan (*touch-screen kiosk*) memandu tamu mengisi nama, NIP/NIK, instansi asal, no. WhatsApp, serta memilih pegawai yang hendak ditemui di 4 bidang BKPSDM.
+
+*Gambar 10. Tampilan Modal Snapshot Foto Webcam dan Cetak Tiket Tamu*
+
+Tampilan popup kamera HTML5 mengambil foto wajah pengunjung secara instan dan menghasilkan pratinjau struk tiket berformat QR Code yang siap dicetak pada printer thermal lobi.
+
+*Gambar 11. Halaman Manajemen Data Tamu dan Janji Temu Admin (Port 8000)*
+
+Tampilan tabel rekapitulasi kehadiran tamu harian menyajikan penanda status check-in/check-out, verifikasi foto identitas, pencatatan notulensi kunjungan, dan manajemen janji temu masa depan (*future appointments*).
+
+*Gambar 12. Halaman Modul Pengaduan Masyarakat dan Tindak Lanjut*
+
+Antarmuka pengawasan aduan publik menampilkan kode pengaduan, nama pelapor, kategori masalah, berkas lampiran bukti, serta form disposisi arahan dari pimpinan ke bidang terkait.
 
 ---
 
@@ -889,11 +912,33 @@ sequenceDiagram
 ```
 *Gambar 14. Sequence Diagram Ruang Chat Interaktif ASN dan Staf*
 
-* **Gambar 13. Flowchart Alur Layanan Konsultasi Online ASN dan Live Chat:** Diagram alur proses pengajuan tiket konsultasi kepegawaian oleh ASN, delegasi tiket ke staf penangan, interaksi obrolan dua arah di ruang live chat, opsi penetapan jadwal Google Meet, hingga penutupan tiket dan pengisian survei kepuasan.
-* **Gambar 15. Tampilan Portal Formulir Pengajuan Konsultasi Online (Port 8002):** Halaman formulir web publik bagi ASN Kabupaten Banjarnegara untuk memilih 5 kategori kendala kepegawaian, menginput data diri, mengunggah dokumen bukti, dan menerima kode tiket unik otomatis.
-* **Gambar 16. Tampilan Ruang Live Chat Interaktif ASN Pemohon dan Staf:** Tampilan antarmuka ruang percakapan dua arah yang menyajikan riwayat pesan, bubble obrolan pemohon dan staf, preview lampiran gambar/PDF, serta banner informasi jadwal video conference Google Meet.
-* **Gambar 17. Tampilan Portal Pengisian Survei IKM 16 Layanan (Port 8001):** Halaman kuesioner publik interaktif yang menyajikan 9 butir pertanyaan penilaian mutu pelayanan dengan skala Likert 1–4, pilihan 16 layanan spesifik 4 bidang BKPSDM, dan kotak saran perbaikan.
-* **Gambar 18. Terminal WhatsApp Gateway Bot Node.js (Port 3000):** Tampilan log terminal microservice Node.js Baileys yang menampilkan status pairing sesi QR Code multi-device dan log pengiriman pesan notifikasi otomatis ke nomor WhatsApp tamu.
+*Gambar 13. Flowchart Alur Layanan Konsultasi Online ASN dan Live Chat*
+
+Diagram alur di atas memetakan proses pengajuan tiket konsultasi kepegawaian oleh ASN, delegasi tiket ke staf penangan, interaksi obrolan dua arah di ruang live chat, opsi penetapan jadwal Google Meet, hingga penutupan tiket dan pengisian survei kepuasan.
+
+*Gambar 15. Tampilan Halaman Beranda (Landing Page) Portal Layanan Online BKPSDM (Port 8002)*
+
+Antarmuka beranda utama portal publik konsultasi ASN menyajikan banner pahlawan (*hero section*) bernuansa biru resmi instansi, informasi alur konsultasi kepegawaian, daftar layanan unggulan, statistik pelayanan, serta panduan interaktif bagi ASN Pemerintah Kabupaten Banjarnegara.
+
+*Gambar 16. Tampilan Dashboard Portal Pegawai ASN Terautentikasi (Port 8002)*
+
+Antarmuka dashboard pegawai ASN setelah berhasil login menyajikan ringkasan profil pemohon, status tiket konsultasi yang sedang aktif, riwayat pengajuan konsultasi terdahulu, serta tombol cepat untuk membuka ruang chat interaktif maupun memulai pengajuan tiket baru.
+
+*Gambar 17. Tampilan Portal Formulir Pengajuan Konsultasi Online (Port 8002)*
+
+Halaman formulir web publik bagi ASN Kabupaten Banjarnegara untuk memilih 5 kategori kendala kepegawaian, menginput data diri, mengunggah dokumen bukti, dan menerima kode tiket unik otomatis.
+
+*Gambar 18. Tampilan Ruang Live Chat Interaktif ASN Pemohon dan Staf*
+
+Tampilan antarmuka ruang percakapan dua arah menyajikan riwayat pesan, bubble obrolan pemohon dan staf, preview lampiran gambar/PDF, serta banner informasi jadwal video conference Google Meet.
+
+*Gambar 19. Tampilan Portal Pengisian Survei IKM 16 Layanan (Port 8001)*
+
+Halaman kuesioner publik interaktif menyajikan 9 butir pertanyaan penilaian mutu pelayanan dengan skala Likert 1–4, pilihan 16 layanan spesifik 4 bidang BKPSDM, dan kotak saran perbaikan.
+
+*Gambar 20. Terminal WhatsApp Gateway Bot Node.js (Port 3000)*
+
+Tampilan log terminal microservice Node.js Baileys menampilkan status pairing sesi QR Code multi-device dan log pengiriman pesan notifikasi otomatis ke nomor WhatsApp tamu.
 
 ---
 
@@ -919,15 +964,43 @@ sequenceDiagram
     MobileApp->>Staf: Bunyi & Tampilkan Status Bar Notification
     Staf->>MobileApp: Klik Notifikasi ➔ Buka Detail Tiket / Chat Terkait
 ```
-*Gambar 20. Sequence Diagram Push Notification FCM ke Mobile Staf*
+*Gambar 22. Sequence Diagram Push Notification FCM ke Mobile Staf*
 
-* **Gambar 19. Flowchart Integrasi REST API Gateway dan Push Notification FCM:** Diagram alur yang memetakan pertukaran data antara aplikasi mobile Flutter SAPA BKPSDM dengan Laravel Backend melalui API Sanctum, serta mekanisme pemicuan push notifikasi background via Google FCM HTTP v1.
-* **Gambar 21. Tampilan Halaman Login dan Pengaturan Server Dinamis SAPA BKPSDM:** Tampilan layar masuk aplikasi mobile dengan logo resmi BKPSDM, form login kredensial NIP/Password, serta modal pengaturan konfigurasi IP/Domain server backend (*In-App Server Config Switcher*).
-* **Gambar 22. Tampilan Dashboard Bento Grid dan Live Status Tamu SAPA BKPSDM:** Antarmuka dashboard mobile bergaya Bento Grid modern yang menyajikan statistik jumlah tamu hari ini, antrean konsultasi aktif, dan kartu status live chat dengan indikator animasi titik berkedip (*pulsing live dot*).
-* **Gambar 23. Tampilan Workspace Konsultasi Berbasis Scope Peran pada Mobile:** Tampilan daftar tiket konsultasi yang menyesuaikan peran pengguna secara reaktif: tab *👤 Tugas Saya* (untuk staf biasa), tab *👥 Staf Bidang* (untuk Admin Bidang), dan tab *🌐 Semua Bidang* (untuk Kepala BKPSDM dan Super Admin).
-* **Gambar 24. Tampilan Ruang Chat Interaktif dan Quick Responses pada Mobile:** Antarmuka obrolan mobile yang dilengkapi fitur balasan cepat (*quick response chip*), lampiran berkas kamera/galeri, dan tombol pengaturan jadwal pertemuan daring Google Meet.
-* **Gambar 25. Tampilan Monitoring Buku Tamu dan Riwayat Kunjungan pada Mobile:** Tampilan daftar pengunjung fisik hari ini di HP staf, lengkap dengan foto identitas tamu, waktu kedatangan, keperluan dinas, dan status check-out.
-* **Gambar 26. Tampilan Ekspor Laporan Rekapitulasi PDF dan Excel:** Contoh berkas dokumen laporan hasil cetak rekapitulasi buku tamu dan statistik survei IKM yang siap diunduh oleh administrator.
+*Gambar 21. Flowchart Integrasi REST API Gateway dan Push Notification FCM*
+
+Diagram alur di atas memetakan pertukaran data antara aplikasi mobile Flutter SAPA BKPSDM dengan Laravel Backend melalui API Sanctum, serta mekanisme pemicuan push notifikasi background via Google FCM HTTP v1.
+
+*Gambar 23. Tampilan Halaman Login dan Pengaturan Server Dinamis SAPA BKPSDM*
+
+Tampilan layar masuk aplikasi mobile menyajikan logo resmi BKPSDM, form login kredensial NIP/Password, serta modal pengaturan konfigurasi IP/Domain server backend (*In-App Server Config Switcher*).
+
+*Gambar 24. Tampilan Dashboard Bento Grid dan Live Status Tamu SAPA BKPSDM*
+
+Antarmuka dashboard mobile bergaya Bento Grid modern menyajikan statistik jumlah tamu hari ini, antrean konsultasi aktif, dan kartu status live chat dengan indikator animasi titik berkedip (*pulsing live dot*).
+
+*Gambar 25. Tampilan Workspace Konsultasi Berbasis Scope Peran pada Mobile*
+
+Tampilan daftar tiket konsultasi menyesuaikan peran pengguna secara reaktif: tab *👤 Tugas Saya* (untuk staf biasa), tab *👥 Staf Bidang* (untuk Admin Bidang), dan tab *🌐 Semua Bidang* (untuk Kepala BKPSDM dan Super Admin).
+
+*Gambar 26. Tampilan Ruang Chat Interaktif dan Quick Responses pada Mobile*
+
+Antarmuka obrolan mobile dilengkapi fitur balasan cepat (*quick response chip*), lampiran berkas kamera/galeri, dan tombol pengaturan jadwal pertemuan daring Google Meet.
+
+*Gambar 27. Tampilan Monitoring Buku Tamu dan Riwayat Kunjungan pada Mobile*
+
+Tampilan daftar pengunjung fisik hari ini di HP staf menyajikan foto identitas tamu, waktu kedatangan, keperluan dinas, dan status check-out.
+
+*Gambar 28. Tampilan Kalender Janji Temu dan Agenda Pertemuan pada Mobile SAPA BKPSDM*
+
+Tampilan modul kalender interaktif pada aplikasi mobile memudahkan staf dan pimpinan memantau jadwal audiensi, agenda janji temu tamu, serta jadwal konsultasi daring yang telah disepakati bersama.
+
+*Gambar 29. Tampilan Pengaturan Profil Akun dan Konfigurasi Tema pada Mobile*
+
+Tampilan halaman preferensi pengguna menyajikan informasi detail kepegawaian staf penanggung jawab, konfigurasi notifikasi, pengalihan server backend aktif, serta opsi keluar (*logout*).
+
+*Gambar 30. Tampilan Ekspor Laporan Rekapitulasi PDF dan Excel*
+
+Contoh berkas dokumen laporan hasil cetak rekapitulasi buku tamu dan statistik survei IKM yang siap diunduh oleh administrator.
 
 ---
 

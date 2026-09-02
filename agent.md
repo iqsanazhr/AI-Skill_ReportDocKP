@@ -42,11 +42,11 @@
 > 1. **Student Full Name (*Nama Lengkap Mahasiswa*)**
 > 2. **Student ID / NIM (*Nomor Induk Mahasiswa*)**
 > 3. **Report Title (*Judul Lengkap Laporan Kerja Praktik*)**
-> 4. **Screenshot Preference & Token Advisory:**  
->    The AI Agent **MUST explicitly ask** whether the user wants automated UI screenshots, accompanied by this clear advisory warning:
->    * **Option A (Recommended): Format Placeholders Only** — The AI prepares standardized, publication-grade figure captions and placeholders so the user can insert authentic screenshots manually. *This conserves maximum token context window budget for comprehensive, detailed chapter prose.*
->    * **Option B (⚠️ NOT RECOMMENDED): Automated In-IDE Browser Screenshots** — The AI spins up local dev servers and browser subagents to take live screenshots of the running application.  
->      *Advisory Note:* Automated screenshot capture consumes an immense volume of conversational token context window budget, leading to potential token exhaustion, and is generally not recommended.
+> 4. **Screenshot Preference & Execution Strategy:**  
+>    The AI Agent **MUST proactively ask** whether the user wants automated UI screenshots:
+>    * **Option A: Format Placeholders Only** — The AI prepares standardized, publication-grade figure captions and placeholders so the user can insert authentic screenshots manually.
+>    * **Option B (Recommended for Live Projects): Automated Engine via `scripts/capture_screenshots.py`** — The AI executes the background automation script `scripts/capture_screenshots.py` using Playwright / Google Chrome headless.  
+>      *Advantage:* The Python engine automates login, dynamic QR token computation (HMAC-SHA256), animation settling waits (`networkidle` + 3.5s timeout), mobile viewports (412x840), and date-filtered report queries in seconds with **zero LLM conversational token overhead**. All captured PNGs are saved to `extracted_assets/screenshots/` and automatically embedded by `kp_docx_generator.py`.
 
 ---
 
@@ -437,6 +437,91 @@ The report **MUST INCLUDE ALL 8 ACCREDITED APPENDICES**:
    6 captioned high-resolution photographs documenting on-site development, client consultations, and deployment activities.
 8. **LAMPIRAN 8: CURRICULUM VITAE (CV)**  
    Student profile: Full Name, Address, Contact/WhatsApp, Email, GitHub, Professional Summary, Educational History & GPA, Internship Projects, and Technical Skills Inventory.
+
+---
+
+## 8.5 AUTOMATED SCREENSHOT ENGINE: AI RECONNAISSANCE & ADAPTATION PROTOCOL
+
+> [!IMPORTANT]
+> **AI AGENT META-PROMPT FOR PROJECT-SPECIFIC SCREENSHOT SCRIPTS:**  
+> Every project has distinct tech stacks, authentication mechanisms, database models, and route structures. **The AI Agent MUST NOT assume hardcoded routes, generic logins, or identical selectors across different codebases.**  
+> When tasked with capturing screenshots for a new project, the AI Agent must execute the **5-Step Autonomous Workspace Reconnaissance Protocol** to craft or adapt `scripts/capture_screenshots.py` specifically tailored to the target project.
+
+### 🔍 5-Step Autonomous Workspace Reconnaissance Protocol:
+
+#### Step 1: Discover Services, Ports, and Environment Configurations
+* Inspect `.env`, `.env.example`, `docker-compose.yml`, or startup batch files (`jalankan_semua.bat`, `start.sh`) to identify active service ports (e.g., Port 8000 for Admin, Port 8001 for Surveys, Port 8002 for Public/ASN Portals, Port 8003 for Kiosks, Port 3000 for Microservices/Node.js).
+* Verify whether local services are currently active by checking network listeners or HTTP responses.
+
+#### Step 2: Extract Authentic Credentials and Authentication Schemes
+* Inspect route files (`routes/web.php`, `routes/api.php`, `urls.py`, `app-routing.module.ts`) and Auth Controllers:
+  * If the app uses **Username & Password**: Identify standard fields (e.g., `input[name="username"]`, `input[name="password"]`).
+  * If the app uses **Identity Numbers (NIP / NIM / KTP)**: Check database seeders (`database/seeders/*`, `seeds/*`) to retrieve an authentic, valid test account (e.g., NIP `198501012010011001` with default password `password123`).
+  * If the app requires **Multi-Role Scopes** (Super Admin vs. Field Admin vs. End-User): Ensure the script logs in with the appropriate role needed for each specific screenshot.
+
+#### Step 3: Mobile Framework Emulation Strategy (Avoiding Heavy Emulators)
+* Detect whether a mobile client project exists (e.g., Flutter in `android app/` or React Native/Expo).
+* **If Flutter:** Check if web target is supported (`web/` directory exists).
+  * **Execute:** `flutter build web --release` in the Flutter directory.
+  * **Serve:** Host the output statically: `python -m http.server 5000 --directory "path/to/build/web"`.
+  * **Capture:** Point Playwright to `http://127.0.0.1:5000` using Android Flagship viewport (`width: 412, height: 840`, `device_scale_factor: 2.0`, `is_mobile: True`, `--hide-scrollbars`).
+  * *Advantage:* Delivers authentic Flutter widgets and animations without consuming 4–8 GB of system RAM for Android Studio emulators!
+* **If Responsive Web / PWA:** Open the responsive endpoints directly in Playwright under the mobile context.
+
+#### Step 4: Handle Dynamic Session Guards, Full-Page Captures, & Date Query Filters
+* **Full-Page Long Scrolling (`full_page=True`):** For long web forms (e.g., Online Consultation Forms, Self Check-In Kiosks, 9-Question Likert Scale Surveys), standard viewports truncate the bottom half. Always specify `page.screenshot(path=..., full_page=True)` so the entire interface from top header to submit button is captured without clipping.
+* **Overcoming the "Blank State" Trap (In-Session Seeding):**
+  * Modern dashboards, guest books, and calendar screens frequently default to "Today" (`Carbon::today()`) or specific filters. If no records exist for the testing date, the capture will display an unconvincing empty state (*"Belum Ada Data Tamu"* or *"0 Agenda"*).
+  * The AI Agent must inspect the database and seed 3–5 authentic dummy records for today (`firstOrCreate` with active statuses) and configure calendar dates to the active internship month (e.g., August 2026) so that screenshots showcase production-grade data density.
+* **Dynamic Tokens / HMAC:** If an endpoint requires dynamic tokens (such as QR kiosk expiry guards), inspect the helper/controller to replicate token generation (e.g., Python `hmac.new(secret, f"QR_{interval}_{time_window}", hashlib.sha256).hexdigest()[:16]`) so that the captured page is active and clean.
+* **Internship Period Filters:** If statistical recap tables default to today's date, inject the exact internship date range via query parameters (e.g., `?periode_mulai=YYYY-MM-01&periode_selesai=YYYY-MM-31`) to ensure the table displays authentic historical data.
+* **Animation & Livewire Settling:** Always mandate `networkidle` followed by `page.wait_for_timeout(3500)` so that Tailwind transitions, Google Fonts, and Livewire/SPA reactive states finish rendering before capture.
+
+#### Step 5: Mobile Flutter Web Direct Route Handling & Auth State Persistence
+* Ensure that Flutter Web release builds support deep-link routing (`/#/dashboard`, `/#/konsultasi`, `/#/tamu`, `/#/calendar`, `/#/chat`, `/#/settings`).
+* Guard against premature redirects: The capture script must execute a programmatic login click on the login card first to store the `auth_token` in browser `localStorage` (`SharedPreferences`), or enable auto-login for `kIsWeb`, ensuring that role-scoped workspaces, live chat rooms, and bento grids render in an authenticated state.
+
+#### Step 6: Generate & Execute the Tailored `capture_screenshots.py`
+* The AI drafts the custom `capture_screenshots.py` script adhering to the inspected parameters.
+* The script outputs all standardized PNG images into `extracted_assets/screenshots/`.
+* The AI verifies that `kp_docx_generator.py`'s `diagram_mapping` dictionary maps all 30 figures to their exact PNG filenames to ensure seamless insertion into the `.docx` document.
+
+---
+
+### 8.6 AUTOMATED DIRECT WORD TO PDF EXPORT VIA WORD COM (WINDOWS)
+On Windows environments with Microsoft Word installed, the AI Agent can compile a 100% faithful, print-ready PDF using the native Windows Word COM automation pipeline:
+```python
+import os, win32com.client, shutil
+
+doc_path = os.path.abspath('path/to/Report.docx')
+pdf_path = os.path.abspath('path/to/Report.pdf')
+
+word = win32com.client.Dispatch('Word.Application')
+word.Visible = False
+try:
+    doc = word.Documents.Open(doc_path)
+    # FileFormat 17 = wdFormatPDF
+    doc.SaveAs(pdf_path, FileFormat=17)
+    doc.Close()
+    print(f"SUCCESS: Exported PDF ({os.path.getsize(pdf_path)} bytes)")
+finally:
+    word.Quit()
+```
+*Advantage:* Generates an authentic PDF identical to manual Word export with exact A4 geometry, Roman front-matter pagination, Arabic body pagination, and high-DPI image rendering with zero formatting regressions.
+
+### Standard Baseline CLI Execution:
+```bash
+python scripts/capture_screenshots.py \
+    --output-dir "extracted_assets/screenshots" \
+    --base-url "http://127.0.0.1:8000" \
+    --kios-url "http://127.0.0.1:8003" \
+    --konsul-url "http://127.0.0.1:8002" \
+    --survei-url "http://127.0.0.1:8001" \
+    --username "admin" \
+    --password "password123" \
+    --periode-mulai "2026-08-01" \
+    --periode-selesai "2026-08-31"
+```
 
 ---
 

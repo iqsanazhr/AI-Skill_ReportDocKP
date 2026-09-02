@@ -136,6 +136,7 @@ After confirming your intake details, the AI Agent will autonomously:
 │   └── laporan_kerja_praktik_bkpsdm.md # Full reference report markdown source
 ├── scripts/
 │   ├── kp_docx_generator.py    # Python OpenXML rendering engine (Markdown -> Word .docx)
+│   ├── capture_screenshots.py  # Automated Playwright & Chrome screenshot capture engine
 │   └── README.md               # Technical documentation for the Python generator
 └── templates/
     └── template_structure.md   # Structural blueprint covering Front Matter, Chapters I-V, & Appendices 1-8
@@ -204,6 +205,64 @@ python scripts/kp_docx_generator.py \
    - You can update all page numbers inside Microsoft Word with a single keypress: press **`Ctrl + A`** then **`F9`** (*Update Entire Table*).
 5. **Printer Settings for Physical Binding:**
    - When printing the document for physical hard-cover binding, ensure your printer paper size is strictly set to **A4** (not Letter) to preserve the required 4-3-3-3 cm margin geometry.
+
+---
+
+## 📸 Automated Web & Mobile Screenshot Engine
+
+You can automatically take screenshots of all active web portals (admin, kiosk, consultations, public surveys) and mobile screens using the included Playwright automation script:
+
+```bash
+# Install dependencies
+pip install playwright
+playwright install chromium
+
+# Run the automated screenshot capture
+python scripts/capture_screenshots.py \
+    --output-dir "extracted_assets/screenshots" \
+    --base-url "http://127.0.0.1:8000" \
+    --kios-url "http://127.0.0.1:8003" \
+    --konsul-url "http://127.0.0.1:8002" \
+    --survei-url "http://127.0.0.1:8001" \
+    --username "admin" \
+    --password "password123" \
+    --periode-mulai "2026-08-01" \
+    --periode-selesai "2026-08-31"
+```
+
+### 🧠 Project-Adaptive Reconnaissance Capability:
+The AI Agent doesn't just run a static script; it possesses an **Autonomous Workspace Reconnaissance Protocol**:
+* **Tech-Stack & Route Inspection:** Analyzes routes, auth controllers, and `.env` files to locate genuine login credentials (e.g. usernames, NIPs, or emails).
+* **Multi-Role Login Automation:** Dispatches requests through authenticated sessions (Super Admin, Staf, or End-User) based on the target page.
+* **Full-Page Long Scrolling (`full_page=True`):** Captures complete vertical layouts for long submission forms (Online Consultations, Kiosks, 9-question Likert scale IKM surveys) without clipping submit buttons.
+* **In-Session Seeding & Date Alignment:** Overcomes the "blank state" trap on daily dashboards and calendars by seeding 3–5 authentic records for today and configuring calendar focus to the active internship month (e.g. August 2026).
+* **Flutter Headless Web Emulation:** Compiles Flutter mobile apps to web (`flutter build web --release`) and hosts them locally (e.g. port 5000), using flagship Android viewports (`412x860`, `device_scale_factor: 2.0`) to capture real mobile Bento Grids, chat rooms, and workspaces without heavy Android Studio emulators.
+* **Dynamic Parameter Injections:** Generates active HMAC session tokens to prevent expired states, and applies date filters matching the user's specific internship period.
+* **Unified 30-Figure Standard:** Fully manages and embeds 30 publication-grade diagrams and system screenshots into the report.
+* **Custom Script Synthesis:** The AI automatically writes or updates `scripts/capture_screenshots.py` specifically tailored to whatever project repository it is loaded into!
+
+---
+
+## 🖨️ Automated Native PDF Export via Word COM (Windows)
+
+On Windows machines with Microsoft Word installed, you can produce a 100% exact, publication-ready PDF with high-DPI images, accurate Table of Contents pagination, and zero layout drift using the native Word COM automation pipeline:
+
+```python
+import os, win32com.client, shutil
+
+doc_path = os.path.abspath("path/to/Laporan_KP.docx")
+pdf_path = os.path.abspath("path/to/Laporan_KP.pdf")
+
+word = win32com.client.Dispatch("Word.Application")
+word.Visible = False
+try:
+    doc = word.Documents.Open(doc_path)
+    doc.SaveAs(pdf_path, FileFormat=17) # 17 = wdFormatPDF
+    doc.Close()
+    print(f"SUCCESS: Exported PDF ({os.path.getsize(pdf_path)} bytes)")
+finally:
+    word.Quit()
+```
 
 ---
 

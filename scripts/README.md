@@ -78,6 +78,53 @@ python "scripts/kp_docx_generator.py" \
 
 ---
 
+## 📸 USAGE GUIDE: `capture_screenshots.py`
+### Automated Web & Mobile Screenshot Engine (Playwright / Chrome Headless)
+
+The `capture_screenshots.py` script captures all required web portal and mobile UI screenshots automatically from active local servers.
+
+### 1. Installation:
+```bash
+pip install playwright
+playwright install chromium
+```
+
+### 2. Execution Command:
+```bash
+python scripts/capture_screenshots.py \
+    --output-dir "extracted_assets/screenshots" \
+    --base-url "http://127.0.0.1:8000" \
+    --kios-url "http://127.0.0.1:8003" \
+    --konsul-url "http://127.0.0.1:8002" \
+    --survei-url "http://127.0.0.1:8001" \
+    --username "admin" \
+    --password "password123" \
+    --periode-mulai "2026-08-01" \
+    --periode-selesai "2026-08-31"
+```
+
+### 3. Captured Output Files:
+* `ss_login.png`: Admin Portal Login (Port 8000)
+* `ss_dashboard.png`: Admin Statistical Dashboard (Port 8000)
+* `ss_users.png`: Master User & Roles Management (Port 8000)
+* `ss_tamu_admin.png`: Guest Book & Appointments (Port 8000)
+* `ss_pengaduan_admin.png`: Public Grievances & Dispositions (Port 8000)
+* `ss_qr_standee.png`: Receptionist QR Code Standee & Countdown (Port 8000)
+* `ss_wa_gateway.png`: WhatsApp Bot Microservice Status (Port 8000)
+* `ss_laporan_rekap.png`: Monthly Recap Filtered to Specific Period (Port 8000)
+* `ss_kios_lobi.png`: Lobby Kiosk Self Check-in with Valid Dynamic QR Token (Port 8003)
+* `ss_konsultasi_online.png`: Online Consultation Request Form (Port 8002)
+* `ss_konsultasi_chat.png`: Real Livewire Interactive Chat Room (Port 8002)
+* `ss_survei_ikm.png`: 16-Service Public Satisfaction Survey (Port 8001)
+* `ss_mobile_login.png`: Mobile Flagship Login Screen (412x840 px)
+* `ss_mobile_workspace.png`: Mobile Consultation Workspace Tab
+* `ss_mobile_chat.png`: Mobile Interactive Chat Interface
+* `ss_mobile_tamu.png`: Mobile Guest Monitoring View
+
+All captured images are directly placed into the designated output directory and seamlessly embedded into the `.docx` document by `kp_docx_generator.py`.
+
+---
+
 ## 👁️ Previewing Documents in VS Code
 
 To view generated Word documents directly inside VS Code without desktop Microsoft Word:

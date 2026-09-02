@@ -217,17 +217,44 @@ def generate_docx(input_md, output_docx, author=None, nim=None, title=None, logo
     if not diagrams_dir:
         diagrams_dir = os.path.join(os.path.dirname(input_md), 'extracted_assets', 'rendered_diagrams')
 
+    ss_dir = os.path.join(os.path.dirname(input_md), 'extracted_assets', 'screenshots')
+
     diagram_mapping = {
+        # Diagram Arsitektur & UML
         'Gambar 1.': os.path.join(diagrams_dir, 'diag_arsitektur.png'),
         'Gambar 2.': os.path.join(diagrams_dir, 'diag_use_case.png'),
         'Gambar 3.': os.path.join(diagrams_dir, 'diag_class.png'),
         'Gambar 4.': os.path.join(diagrams_dir, 'diag_erd.png'),
+        # Sprint 1 Screenshots
+        'Gambar 5.': os.path.join(ss_dir, 'ss_login.png'),
+        'Gambar 6.': os.path.join(ss_dir, 'ss_users.png'),
+        # Sprint 2 Diagrams & Screenshots
         'Gambar 7.': os.path.join(diagrams_dir, 'diag_flowchart_checkin.png'),
         'Gambar 8.': os.path.join(diagrams_dir, 'diag_seq_checkin.png'),
+        'Gambar 9.': os.path.join(ss_dir, 'ss_kios_lobi.png'),
+        'Gambar 10.': os.path.join(ss_dir, 'ss_qr_standee.png'),
+        'Gambar 11.': os.path.join(ss_dir, 'ss_tamu_admin.png'),
+        'Gambar 12.': os.path.join(ss_dir, 'ss_pengaduan_admin.png'),
+        # Sprint 3 Diagrams & Screenshots
         'Gambar 13.': os.path.join(diagrams_dir, 'diag_flowchart_konsul.png'),
         'Gambar 14.': os.path.join(diagrams_dir, 'diag_seq_chat.png'),
-        'Gambar 19.': os.path.join(diagrams_dir, 'diag_flowchart_api_fcm.png'),
-        'Gambar 20.': os.path.join(diagrams_dir, 'diag_seq_fcm.png'),
+        'Gambar 15.': os.path.join(ss_dir, 'ss_landing_online.png'),
+        'Gambar 16.': os.path.join(ss_dir, 'ss_asn_dashboard.png'),
+        'Gambar 17.': os.path.join(ss_dir, 'ss_konsultasi_online.png'),
+        'Gambar 18.': os.path.join(ss_dir, 'ss_konsultasi_chat.png'),
+        'Gambar 19.': os.path.join(ss_dir, 'ss_survei_ikm.png'),
+        'Gambar 20.': os.path.join(ss_dir, 'ss_wa_gateway.png'),
+        # Sprint 4 Diagrams & Screenshots
+        'Gambar 21.': os.path.join(diagrams_dir, 'diag_flowchart_api_fcm.png'),
+        'Gambar 22.': os.path.join(diagrams_dir, 'diag_seq_fcm.png'),
+        'Gambar 23.': os.path.join(ss_dir, 'ss_mobile_login.png'),
+        'Gambar 24.': os.path.join(ss_dir, 'ss_dashboard.png'),
+        'Gambar 25.': os.path.join(ss_dir, 'ss_mobile_workspace.png'),
+        'Gambar 26.': os.path.join(ss_dir, 'ss_mobile_chat.png'),
+        'Gambar 27.': os.path.join(ss_dir, 'ss_mobile_tamu.png'),
+        'Gambar 28.': os.path.join(ss_dir, 'ss_mobile_calendar.png'),
+        'Gambar 29.': os.path.join(ss_dir, 'ss_mobile_settings.png'),
+        'Gambar 30.': os.path.join(ss_dir, 'ss_laporan_rekap.png'),
     }
 
     # Build Cover
