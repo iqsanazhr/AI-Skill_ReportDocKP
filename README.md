@@ -7,10 +7,89 @@
 [![Document Standard](https://img.shields.io/badge/Document-Word%20.docx%20%7C%20A4%204--3--3--3-purple.svg)](#-mandatory-academic-formatting-standards)
 
 An end-to-end, autonomous **AI Skill module** engineered specifically for the **Google Antigravity IDE** powered by **Gemini 4.7 Flash**. This module guides the AI Agent to master the complete document architecture, chapter layout, academic typography, diagram rendering, and formatting guidelines for University Practical Work (Kerja Praktik / KP) reports, matching 100% with real-world accredited standards:
-1. `assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf` (Original Reference PDF)
-2. `assets/dokumen.md` (Project Scope, WBS, and Deliverables)
-3. `assets/laporan_kerja_praktik_bkpsdm.md` (Complete Markdown Source Text)
-4. `scripts/kp_docx_generator.py` (Automated OpenXML / Python DOCX Rendering Engine)
+1. [📄 `assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf`](assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf) (**Original Reference PDF** - 111 Halaman Standar Akreditasi)
+2. [`assets/dokumen.md`](assets/dokumen.md) (Project Scope, WBS, and Deliverables)
+3. [`assets/laporan_kerja_praktik_bkpsdm.md`](assets/laporan_kerja_praktik_bkpsdm.md) (Complete Markdown Source Text)
+4. [`scripts/kp_docx_generator.py`](scripts/kp_docx_generator.py) (Automated OpenXML / Python DOCX Rendering Engine)
+
+---
+
+## 📑 Dokumen Referensi Resmi (Official Reference PDF)
+
+Modul ini dibangun dan distandardisasi berdasarkan berkas Laporan Kerja Praktik resmi (111 halaman) yang telah disahkan dan diuji secara akademis:
+
+<div align="center">
+  <p>
+    <a href="assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf">
+      <img src="https://img.shields.io/badge/📖%20Buka%20di%20GitHub-PDF%20Interactive%20Viewer-blue?style=for-the-badge&logo=github&logoColor=white" alt="Buka di GitHub PDF Viewer" />
+    </a>
+    &nbsp;
+    <a href="assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf" download>
+      <img src="https://img.shields.io/badge/📥%20Unduh-Berkas%20PDF%20(111%20Hlm%20%7C%207.5MB)-red?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Unduh PDF" />
+    </a>
+    &nbsp;
+    <a href="assets/laporan_kerja_praktik_bkpsdm.md">
+      <img src="https://img.shields.io/badge/📝%20Lihat-Sumber%20Markdown-green?style=for-the-badge&logo=markdown&logoColor=white" alt="Lihat Markdown" />
+    </a>
+  </p>
+</div>
+
+### 🖼️ Pratinjau Lembar Halaman Dokumen Asli (Document Page Showcase)
+> *Di bawah ini adalah render visual langsung dari halaman-halaman kunci dokumen PDF 111 halaman. Klik pada gambar halaman mana saja untuk langsung membaca berkas PDF lengkap.*
+
+<div align="center">
+  <table>
+    <tr>
+      <th align="center" width="20%"><b>Sampul Depan (Cover)</b></th>
+      <th align="center" width="20%"><b>Lembar Pengesahan</b></th>
+      <th align="center" width="20%"><b>Daftar Isi</b></th>
+      <th align="center" width="20%"><b>BAB I Pendahuluan</b></th>
+      <th align="center" width="20%"><b>Diagram Rekayasa Sistem</b></th>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf">
+          <img src="assets/preview_cover.png" alt="Sampul Depan" width="100%" style="border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf">
+          <img src="assets/preview_pengesahan.png" alt="Lembar Pengesahan" width="100%" style="border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf">
+          <img src="assets/preview_daftar_isi.png" alt="Daftar Isi" width="100%" style="border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf">
+          <img src="assets/preview_bab1.png" alt="BAB I Pendahuluan" width="100%" style="border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf">
+          <img src="assets/preview_diagram.png" alt="Diagram Rekayasa Sistem" width="100%" style="border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><sub><i>Halaman Judul</i></sub></td>
+      <td align="center"><sub><i>Halaman ii</i></sub></td>
+      <td align="center"><sub><i>Halaman iii</i></sub></td>
+      <td align="center"><sub><i>Halaman 1 (BAB I)</i></sub></td>
+      <td align="center"><sub><i>Halaman 45 (Bab III)</i></sub></td>
+    </tr>
+  </table>
+</div>
+
+| Komponen Dokumen | Informasi Spesifikasi & Akses Berkas |
+|---|---|
+| **Judul Laporan** | **Rancang Bangun Sistem Backend, RESTful API Gateway, dan Integrasi Multi-Service Pelayanan, Pengaduan, dan Konsultasi Online ASN pada BKPSDM Kabupaten Banjarnegara** |
+| **Penulis & NIM** | **Iqsan Azhar Nuryadi** &bull; **H1D024009** |
+| **Instansi Akademik** | Jurusan Informatika, Fakultas Teknik, **Universitas Jenderal Soedirman** (Purbalingga, 2026) |
+| **Tautan Berkas PDF** | 👉 [**`assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf`**](assets/Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf) *(Ukuran: ~7.5 MB)* |
+| **Cakupan Dokumen** | **111 Halaman Penuh Standar Akreditasi:**<br>&bull; Bagian Awal (Halaman Judul, Lembar Pengesahan, Abstrak, Kata Pengantar, Daftar Isi, Daftar Tabel, Daftar Gambar)<br>&bull; **BAB I s.d. BAB V** Lengkap dengan 6 Model Diagram Rekayasa Perangkat Lunak (Arsitektur, Use Case, Class, ERD, Flowchart, Sequence)<br>&bull; Daftar Pustaka (Standar APA 7th Edition)<br>&bull; **Lampiran 1 s.d. 8** Lengkap (Sertifikat KP, Surat Penerimaan Resmi, Lembar Penilaian Nilai A, Presensi 24 Hari, Logbook Harian, Matriks UAT, Dokumentasi Foto Kegiatan, & Curriculum Vitae) |
 
 ---
 
@@ -131,7 +210,8 @@ After confirming your intake details, the AI Agent will autonomously:
 ├── README.md                   # Main documentation and quick-start guide
 ├── assets/
 │   ├── logo_unsoed.png         # High-resolution official university crest
-│   ├── Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf # Reference PDF report
+│   ├── preview_*.png           # High-resolution page preview thumbnails (Cover, Pengesahan, Daftar Isi, BAB I, Diagram)
+│   ├── Laporan_Kerja_Praktik_BKPSDM_Iqsan_Azhar_Nuryadi.pdf # Reference PDF report (111 pages)
 │   ├── dokumen.md              # Scope, WBS, and project deliverables reference
 │   └── laporan_kerja_praktik_bkpsdm.md # Full reference report markdown source
 ├── scripts/
