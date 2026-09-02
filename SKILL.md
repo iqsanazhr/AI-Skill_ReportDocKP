@@ -14,17 +14,17 @@ This skill teaches the Antigravity AI Agent (powered by **Gemini 4.7 Flash**) ho
 
 ## Quick Start & Usage
 
-When invoking this skill in Antigravity chat:
+### 1. Mandatory User Intake Protocol
+Before drafting or compiling the report, the AI Agent **must proactively ask and confirm** with the user:
+1. **Student Full Name (*Nama Lengkap*)**
+2. **Student NIM (*Nomor Induk Mahasiswa*)**
+3. **Report Title (*Judul Laporan Kerja Praktik*)**
+4. **Screenshot Option (*Opsi Screenshot*):** Give the user the choice between:
+   - *(Recommended)* AI creates formatted captions & placeholders for manual insertion (saves token context budget).
+   - *(⚠️ Not Recommended)* AI captures automated browser screenshots (advising the user that this consumes a very high token budget).
 
-```text
-Please generate a complete Practical Work (KP) report for:
-- Student Name: [Full Name]
-- Student NIM: [NIM / Student ID]
-- Project / Role: [Project Title and System Architecture]
-Follow all guidelines and strict rules specified in agent.md.
-```
-
-The AI Agent will:
+### 2. Autonomous Execution
+Once confirmed, the AI Agent will:
 1. Inspect your workspace codebase and project deliverables.
 2. Draft the complete academic report covering the Cover, Declaration, Approval Sheet, Chapters I to V, APA 7th References, and all 8 Appendices.
 3. Formulate and render 6 software engineering diagrams (Architecture, Use Case, Class, ERD, Flowchart, Sequence) via Mermaid API to PNG.

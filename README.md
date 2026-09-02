@@ -58,37 +58,67 @@ Launch your **Google Antigravity IDE** and open your project workspace.
 3. Under the reasoning/thinking budget setting, choose **`Medium`** or **`High`** to enable the AI to deeply inspect project codebases and generate comprehensive academic text without truncating chapters.
 
 ### Step 3: Add the Skill to Your Project
-Choose one of the following two methods:
+Choose one of the following two setup options:
 
-* **Method A: Direct Folder in Workspace (Easiest)**
-  - Download / extract the ZIP file (or copy the `AI Skill KP generator` folder) directly into your active project root directory.
-  
-* **Method B: Native Antigravity Skill Discovery**
-  - Place this folder into your project's `.agents/skills/` directory:
-    ```text
-    your-project/
-    └── .agents/
-        └── skills/
-            └── kp-report-generator/
-                ├── SKILL.md
-                ├── agent.md
-                ├── assets/
-                ├── scripts/
-                └── templates/
-    ```
-  - Alternatively, place it in your global configuration path at `~/.gemini/config/skills/kp-report-generator/` to make it accessible across all workspaces.
+* **Option A: Native Antigravity Skill Location (Recommended)**  
+  Place the extracted skill folder into your project's `.agents/skills/` directory as `kp-report-generator`:
+  ```text
+  your-project/
+  └── .agents/
+      └── skills/
+          └── kp-report-generator/
+              ├── SKILL.md
+              ├── agent.md
+              ├── assets/
+              ├── scripts/
+              └── templates/
+  ```
+  *(Or place it globally in `~/.gemini/config/skills/kp-report-generator/` on Linux/macOS or `%USERPROFILE%\.gemini\config\skills\kp-report-generator\` on Windows to make it automatically available across all projects).*
 
-### Step 4: Load and Instruct the AI Agent
-Open the Antigravity AI chat panel and prompt the assistant:
+* **Option B: Direct Workspace Folder**  
+  Simply extract the ZIP or copy the `AI Skill KP generator` folder directly into your project's root folder.
 
-> *"Please generate a complete Practical Work (KP) report for student **[Student Name]**, Student ID / NIM **[NIM]**, topic/role: **[Project Title & Role]**, by strictly reading and following the guidelines in `agent.md` (or `@kp-report-generator`)."*
+---
 
-### Step 5: Autonomous Generation & Compilation
-Once instructed, the AI Agent will autonomously:
-1. **Analyze Your Codebase:** Inspect your project files, commit history, architectural layers, and database schemas.
-2. **Draft the Full Academic Report:** Produce the Title Page, Declaration, Approval Sheet, Chapters I through V, References (APA 7th edition), and all 8 Appendices.
-3. **Generate & Render System Diagrams:** Write valid Mermaid diagrams (Architecture, Use Case, Class, ERD, Flowchart, Sequence) and render them to crisp PNG images.
-4. **Compile to Microsoft Word (`.docx`):** Execute `scripts/kp_docx_generator.py` to output a 100% formatted, print-ready Word document.
+### Step 4: How to Load the Skill in Antigravity
+
+Antigravity gives you multiple easy ways to load and activate the skill:
+
+1. **Direct Mention via `@` Tag:**  
+   In the Antigravity chat input box, type `@kp-report-generator` to instantly attach and activate the skill context.
+   
+2. **Explicit Chat Command:**  
+   Type in chat:
+   > *"Load skill `kp-report-generator` (or read `agent.md`) and create my Practical Work report."*
+   
+3. **Automatic On-Demand Discovery:**  
+   Because the folder contains `SKILL.md` with standard frontmatter metadata, Antigravity automatically indexes the skill and activates it whenever you ask questions or give instructions related to practical work (KP) reports, thesis documentation, or university internship reports.
+
+---
+
+### Step 5: Interactive Intake Confirmation (Name, NIM, Title, & Screenshot Choice)
+
+Once loaded, the AI Agent will proactively ask and confirm 4 critical project inputs with you before writing:
+1. **Student Full Name (*Nama Lengkap Mahasiswa*)**
+2. **Student ID / NIM (*Nomor Induk Mahasiswa*)**
+3. **Full Report Title (*Judul Laporan Kerja Praktik*)**
+4. **Screenshot Option (*Opsi Pengambilan Screenshot*):**  
+   The AI will prompt you to choose how application screenshots should be handled:
+   * **Option A (Default & Highly Recommended): Formatted Placeholders & Captions**  
+     The AI creates clean, standardized figure captions and placeholders so you can paste genuine UI screenshots manually. *This conserves maximum context window tokens and guarantees lightning-fast generation.*
+   * **Option B (⚠️ NOT RECOMMENDED): Automated Browser Subagent Screenshots**  
+     The AI starts local servers and commands a browser subagent to take live screenshots of the UI.  
+     *⚠️ Advisory Warning:* Automated screenshot capturing consumes an immense amount of conversational context window tokens, which can cause token budget exhaustion and slower responses.
+
+---
+
+### Step 6: Autonomous Generation & Compilation
+
+After confirming your intake details, the AI Agent will autonomously:
+1. **Analyze Your Codebase:** Inspect directory structures, database migrations, controllers, models, and Git commit histories.
+2. **Draft the Full Academic Report in Indonesian:** Author the complete front matter, Chapters I to V, APA 7th References, and all 8 accredited Appendices in formal academic Indonesian (*Bahasa Indonesia Baku*).
+3. **Render System Diagrams:** Formulate 6 software engineering models (Architecture, Use Case, Class, ERD, Flowchart, Sequence) in Mermaid syntax and automatically render them to high-DPI PNGs.
+4. **Compile to Microsoft Word (`.docx`):** Run `scripts/kp_docx_generator.py` to produce a 100% formatted, print-ready Word document with standard A4 4-3-3-3 cm margins and multi-section page numbering.
 
 ---
 
